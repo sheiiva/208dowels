@@ -18,7 +18,7 @@ class ArgumentManager():
         """
 
         def isInt(value) -> bool:
-            
+
             """Expect for value to be an integer."""
 
             try:
