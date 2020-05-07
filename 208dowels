@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+#coding: utf-8
+
+############################################
+#                MATHEMATICS               #
+############################################
+#                                          #
+#  MONFA-MATAS Patricica & ROZET Corentin  #
+#                                          #
+#          Project : 208dowels_2019        #
+#                                          #
+############################################
+
+
+from sys import argv
+
+from usage import help
+from checkArgs import ArgumentManager
+from dowels import Dowels
+
+
+def main():
+
+    argsManager = ArgumentManager()
+
+    if argsManager.needHelp(argv):
+        help()
+    elif argsManager.checkArgs(argv) == 84:
+        exit (84)
+    else:
+        Dowels().run()
+
+
+if __name__ == "__main__":
+    main()
