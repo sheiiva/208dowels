@@ -14,6 +14,7 @@ from copy import deepcopy
 
 from compute import Compute
 
+
 class Dowels():
 
     """
@@ -28,7 +29,7 @@ class Dowels():
         self._p = 0
 
     def parseInput(self):
-        
+
         """
         Parse input into the _input list.
         """
@@ -36,7 +37,7 @@ class Dowels():
         for index in range(1, len(argv)):
             self._input.append(int(argv[index]))
         self._Ox = deepcopy(self._input)
-        
+
     def statisticalArray(self):
 
         """
@@ -44,8 +45,8 @@ class Dowels():
             and theoretical sizes for each statistical class (with totals).
         """
 
-        def computeEntries():
-            
+        def normalizeEntries():
+
             """
             Compute ._x and .Ox lists' values.
             """
@@ -53,7 +54,6 @@ class Dowels():
             def merge(lst, index):
                 lst[index] += lst[index+1]
                 lst.pop(index+1)
-
 
             i = 0
             while i < len(self._Ox):
@@ -105,10 +105,10 @@ class Dowels():
                 rest -= tmp
                 if xray is self._x[-1]:
                     tmp += rest
-                print(" {:.1f}\t|".format(tmp), end='')                
+                print(" {:.1f}\t|".format(tmp), end='')
             print(" 100")
 
-        computeEntries()
+        normalizeEntries()
         printXLine()
         printOxLine()
         printTxLine()

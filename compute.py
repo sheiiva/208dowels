@@ -30,7 +30,7 @@ class Compute():
         return sumfactorial / (piecePerSample * nbSample)
 
     def binomialCoef(self, n, k) -> int:
-        
+
         """
         Return binomial coefficient as B(n, p).
         """
@@ -50,6 +50,6 @@ class Compute():
 
         """
         Return theorical size.
-        """ 
+        """
 
         return nbSample * self.binomial(piecePerSample, x, p)
