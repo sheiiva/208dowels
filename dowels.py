@@ -9,6 +9,8 @@
 ############################################
 
 
+from compute import Compute
+
 class Dowels():
 
     """
@@ -16,7 +18,8 @@ class Dowels():
     """
 
     def __init__(self):
-        self._d = 0
+        self._compute = Compute()
+        self._p = 0
 
     def run(self):
 
