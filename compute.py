@@ -24,7 +24,10 @@ class Compute():
         Return the probability to have a defective piece out of a sample.
         """
 
-        return factorial(x * Ox) / (piecePerSample * nbSample)
+        sumfactorial = 0
+        for i in range(len(x)):
+            sumfactorial += (x[i][0] * Ox[i])
+        return sumfactorial / (piecePerSample * nbSample)
 
     def binomialCoef(self, n, k) -> int:
         
