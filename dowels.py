@@ -142,9 +142,9 @@ class Dowels():
         Compute and print degrees of freedom.
         """
 
-        
+        freedom = len(self._x) - 2
 
-        print("Degrees of freedom:\t{:d}".format(0))
+        print("Degrees of freedom:\t{:d}".format(freedom))
 
     def fitValidity(self):
 
