@@ -169,11 +169,11 @@ class Dowels():
                 if (dist_table[self._freedom][x] < self._chiSquare) and (x < 12):
                     v.append(dist_table[0][x + 1])
         if (len(v) == 2):
-            print("Fit validity::\t{}% < P < {}%".format(v[1], v[0]))
+            print("Fit validity:\t\t{}% < P < {}%".format(v[1], v[0]))
         elif (len(v) == 0):
-            print("Fit validity::\tP > 99%")
+            print("Fit validity:\t\tP > 99%")
         else:
-            print("Fit validity::\tP < 1%")
+            print("Fit validity:\t\tP < 1%")
 
     def run(self):
 
