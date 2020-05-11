@@ -26,6 +26,7 @@ class Dowels():
         self._input = []
         self._x = [[i] for i in range(9)]
         self._Ox = []
+        self._Tx = []
         self._p = 0
 
     def parseInput(self):
@@ -105,6 +106,7 @@ class Dowels():
                 rest -= tmp
                 if xray is self._x[-1]:
                     tmp += rest
+                self._Tx.append(tmp)
                 print(" {:.1f}\t|".format(tmp), end='')
             print(" 100")
 
@@ -127,13 +129,20 @@ class Dowels():
         Compute and print chi-squared.
         """
 
-        print("Chi-squared:\t\t{:.3f}".format(0))
+        chiSquare = 0
+
+        for i in range(len(self._Ox)):
+            chiSquare += ((self._Ox[i] - self._Tx[i]) ** 2) / self._Tx[i]
+
+        print("Chi-squared:\t\t{:.3f}".format(chiSquare))
 
     def freedomDegrees(self):
 
         """
         Compute and print degrees of freedom.
         """
+
+        
 
         print("Degrees of freedom:\t{:d}".format(0))
 
