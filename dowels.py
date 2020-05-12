@@ -89,7 +89,7 @@ class Dowels():
                     i += 1
 
         def printXLine():
-            print(" x\t|", end='')
+            print("   x\t|", end='')
             for x in self._x:
                 if (len(x) > 1):
                     if (x[-1] is 8):
@@ -104,13 +104,13 @@ class Dowels():
             print(" Total")
 
         def printOxLine():
-            print("0x\t|", end='')
+            print("  0x\t|", end='')
             for Ox in self._Ox:
                 print(" {}\t|".format(Ox), end='')
             print(" 100")
 
         def printTxLine():
-            print("Tx\t|", end='')
+            print("  Tx\t|", end='')
             rest = 100
             for xray in self._x:
                 tmp = 0
