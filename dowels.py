@@ -14,6 +14,7 @@ from copy import deepcopy
 
 from compute import Compute
 
+
 dist_table = [[99, 90, 80, 70, 60, 50, 40, 30, 20, 10, 5, 2, 1],
               [0.00, 0.02, 0.06, 0.15, 0.27, 0.45, 0.71, 1.07, 1.64, 2.71, 3.84, 5.41, 6.63],
               [0.02, 0.21, 0.45, 0.71, 1.02, 1.39, 1.83, 2.41, 3.22, 4.61, 5.99, 7.82, 9.21],
@@ -25,6 +26,7 @@ dist_table = [[99, 90, 80, 70, 60, 50, 40, 30, 20, 10, 5, 2, 1],
               [1.65, 3.49, 4.59, 5.53, 6.42, 7.34, 8.35, 9.52, 11.03, 13.36, 15.51, 18.17, 20.09],
               [2.09, 4.17, 5.38, 6.39, 7.36, 8.34, 9.41, 10.66, 12.24, 14.68, 16.92, 19.68, 21.67],
               [2.56, 4.87, 6.18, 7.27, 8.30, 9.34, 10.47, 11.78, 13.44, 15.99, 18.31, 21.16, 23.21]]
+
 
 class Dowels():
 
@@ -52,14 +54,14 @@ class Dowels():
             self._input.append(int(argv[index]))
         self._Ox = deepcopy(self._input)
 
-    def statisticalArray(self):
+    def statisticalArray(self) -> None:
 
         """
         Compute and print an array showing observed
             and theoretical sizes for each statistical class (with totals).
         """
 
-        def normalizeEntries():
+        def normalizeEntries() -> None:
 
             """
             Compute ._x and .Ox lists' values.
@@ -88,7 +90,7 @@ class Dowels():
                 else:
                     i += 1
 
-        def printXLine():
+        def printXLine() -> None:
             print("   x\t|", end='')
             for x in self._x:
                 if (len(x) > 1):
@@ -103,13 +105,13 @@ class Dowels():
                         print(" {}\t|".format(x[0]), end='')
             print(" Total")
 
-        def printOxLine():
+        def printOxLine() -> None:
             print("  0x\t|", end='')
             for Ox in self._Ox:
                 print(" {}\t|".format(Ox), end='')
             print(" 100")
 
-        def printTxLine():
+        def printTxLine() -> None:
             print("  Tx\t|", end='')
             rest = 100
             for xray in self._x:
@@ -128,7 +130,7 @@ class Dowels():
         printOxLine()
         printTxLine()
 
-    def distribution(self):
+    def distribution(self) -> None:
 
         """
         Compute and print distribution.
@@ -136,7 +138,7 @@ class Dowels():
 
         print("Distribution:\t\tB(100, {:.4f})".format(self._p))
 
-    def chiSquared(self):
+    def chiSquared(self) -> None:
 
         """
         Compute and print chi-squared.
@@ -147,7 +149,7 @@ class Dowels():
 
         print("Chi-squared:\t\t{:.3f}".format(self._chiSquare))
 
-    def freedomDegrees(self):
+    def freedomDegrees(self) -> None:
 
         """
         Compute and print degrees of freedom.
@@ -157,26 +159,26 @@ class Dowels():
 
         print("Degrees of freedom:\t{:d}".format(self._freedom))
 
-    def fitValidity(self):
+    def fitValidity(self) -> None:
 
         """
         Compute and print fit validity.
         """
 
         v = []
-        
-        for x in range(len(dist_table[self._freedom])):
-                if (dist_table[self._freedom][x] < self._chiSquare) and (x < 12):
-                    v.append(dist_table[0][x + 1])
 
-        if (len(v) == 0):
+        for x in range(len(dist_table[self._freedom])):
+            if (dist_table[self._freedom][x] < self._chiSquare) and (x < 12):
+                v.append(dist_table[0][x + 1])
+
+        if len(v) is 0:
             print("Fit validity:\t\tP > 99%")
-        elif (len(v) > 0 and (self._chiSquare > dist_table[self._freedom][len(v)])):
+        elif len(v) > 0 and (self._chiSquare > dist_table[self._freedom][len(v)]):
             print("Fit validity:\t\tP < 1%")
         else:
-            print("Fit validity:\t\t{}% < P < {}%".format(v[len(v) - 1], v[len(v) - 2]))
+            print("Fit validity:\t\t{}% < P < {}%".format(v[-1], v[-2]))
 
-    def run(self):
+    def run(self) -> None:
 
         """
         Run computations and process output printing.
